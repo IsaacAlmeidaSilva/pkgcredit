@@ -20,7 +20,7 @@ func setMinimalRequirementFields(ctx context.Context, l *logger.Logger) {
 	)
 }
 
-func setKeyValueFields(input map[string]any, l *logger.Logger) {
+func setKeyValueFields(input map[string]interface{}, l *logger.Logger) {
 	for key, value := range input {
 		l.SetField(
 			logger.Field(key, value),
@@ -28,7 +28,7 @@ func setKeyValueFields(input map[string]any, l *logger.Logger) {
 	}
 }
 
-func AddLoggerToCtx(ctx context.Context, input map[string]any) context.Context {
+func AddLoggerToCtx(ctx context.Context, input map[string]interface{}) context.Context {
 	l := logger.GetFromCtx(ctx)
 
 	setMinimalRequirementFields(ctx, l)
